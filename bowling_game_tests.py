@@ -26,3 +26,13 @@ def test__score_function__returns_the_correct_score__when_have_a_spare():
         game.roll(pin)
 
     assert game.score() == 33
+    
+def test__score_function__returns_the_correct_score__when_have_a_spare_at_the_last_frame():
+    game = Game()
+
+    pins_per_roll = [2,1,1,4,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5]
+    
+    for pin in pins_per_roll:
+        game.roll(pin)
+
+    assert game.score() == 41
