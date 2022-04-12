@@ -10,4 +10,7 @@ class Game:
         self.rolls.append(pins)
 
     def score(self) -> int:
-        return 0
+        score: int = 0
+        for roll in self.rolls:
+            score += roll
+        return score
