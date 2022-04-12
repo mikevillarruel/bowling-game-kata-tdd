@@ -15,7 +15,7 @@ class Game:
 
         for frame in range(10):
             score += (self.rolls[roll_index] + self.rolls[roll_index+1])
-            if self.is_a_spare(roll_index):
+            if self.is_a_spare(roll_index) and roll_index < len(self.rolls) - 2:
                 score += self.rolls[roll_index+2]
             roll_index += 2
 
