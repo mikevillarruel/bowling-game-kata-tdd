@@ -12,8 +12,13 @@ class Game:
     def score(self) -> int:
         score: int = 0
         roll_index = 0
+        frames = 10
+        
+        if len(self.rolls)>frames*2:
+            tenth_frame_bonus = self.rolls.pop()
+            score=tenth_frame_bonus
 
-        for frame in range(10):
+        for frame in range(frames):
             score += (self.rolls[roll_index] + self.rolls[roll_index+1])
             if self.is_a_spare(roll_index) and roll_index < len(self.rolls) - 2:
                 score += self.rolls[roll_index+2]
