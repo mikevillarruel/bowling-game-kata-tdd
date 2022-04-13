@@ -15,8 +15,11 @@ class Game:
         frames = 10
         
         if len(self.rolls)>frames*2:
-            tenth_frame_bonus = self.rolls.pop()
-            score=tenth_frame_bonus
+            if self.is_a_spare(frames*2-2):
+                tenth_frame_bonus = self.rolls.pop()
+                score=tenth_frame_bonus
+            else:
+                raise Exception("Invalid extra roll, you don't have a valid spare at tenth frame")
 
         for frame in range(frames):
             score += (self.rolls[roll_index] + self.rolls[roll_index+1])
