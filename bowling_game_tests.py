@@ -1,3 +1,4 @@
+import pytest
 from bowling_game import Game
 
 
@@ -56,3 +57,16 @@ def test__score_function__returns_the_correct_score__when_have_a_spare_in_tenth_
         game.roll(pin)
 
     assert game.score() == 61
+
+def test__score_function__raise_an_exception__when_have_an_extra_roll_without_a_valid_spare_in_tenth_frame():
+    game = Game()
+
+    pins_per_roll = [10,0,1,4,5,5,1,1,1,1,1,1,1,1,1,1,1,1,7,2,8]
+    
+    for pin in pins_per_roll:
+        game.roll(pin)
+
+    with pytest.raises(Exception) as context:
+        game.score()
+    
+    assert "Invalid extra roll, you don't have a valid spare at tenth frame" in str(context.value)
