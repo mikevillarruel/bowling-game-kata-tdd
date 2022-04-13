@@ -46,3 +46,13 @@ def test__score_function__returns_the_correct_score__when_have_a_strike():
         game.roll(pin)
 
     assert game.score() == 45
+
+def test__score_function__returns_the_correct_score__when_have_a_spare_in_tenth_frame():
+    game = Game()
+
+    pins_per_roll = [10,0,1,4,5,5,1,1,1,1,1,1,1,1,1,1,1,1,7,3,8]
+    
+    for pin in pins_per_roll:
+        game.roll(pin)
+
+    assert game.score() == 61
